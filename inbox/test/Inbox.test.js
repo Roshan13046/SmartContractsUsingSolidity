@@ -11,40 +11,68 @@ const Web3 = require('web3');
 //creating web3 instance
 const web3 = new Web3(ganache.provider());
 
-//Testing with mocha
+beforeEach(() => {    
+    //Note: every function in web3 library is async ie it's going to return some
+    //promises
+
+    //Get a list of all accounts
+    web3.eth.getAccounts()
+        .then(fetchedAccounts => {
+            console.log(fetchedAccounts);                            
+        });
+    //Use one of those accounts to deploy 
+    //the contract
+});
+
+describe('Inbox', () => {
+    it('deploys a contract', () => {});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+//**************** Testing with mocha ********************
 // About Mocha: 
-// It is a test running framewwork for testing javascript code. It's a genral purpose testing framework with limited set of functions.
+// It is a test running framework for testing javascript code. It's a genral purpose testing framework with limited set of functions.
 
 // Mocha Functions:
 // it : Run a test and make an assertion.
 // describe : Groups together 'it' functions.
 // beforeEach : Execute some general code setup.
 
-class Car{
-    park(){
-        return 'stopped';
-    }
+// class Car{
+//     park(){
+//         return 'stopped';
+//     }
 
-    drive(){
-        return 'vroom';
-    }
-}
+//     drive(){
+//         return 'vroom';
+//     }
+// }
 
-//it is used to prevent the common code repeptions
-let car;
+// //it is used to prevent the common code repeptions
+// let car;
 
-beforeEach(() => {
-    car = new Car();
-});
+// beforeEach(() => {
+//     car = new Car();
+// });
 
-describe('Car', () => {
-    it('can park', () => {
-        // const car = new Car();
-        assert.equal(car.park(), 'stopped');
-    });
+// describe('Car', () => {
+//     it('can park', () => {
+//         // const car = new Car();
+//         assert.equal(car.park(), 'stopped');
+//     });
 
-    it('can drive', () => {
-        // const car = new Car();
-        assert.equal(car.drive(), 'vroom');
-    });
-});
+//     it('can drive', () => {
+//         // const car = new Car();
+//         assert.equal(car.drive(), 'vroom');
+//     });
+// });
